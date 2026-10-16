@@ -29,6 +29,15 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 
 前端 Mock 用于本地体验与契约回归，真实后端联调和生产部署需按目标版本及环境验收。详细兼容边界以两个仓库的 README 和发布文档为准。
 
+## 功能清单与开发计划
+
+以下清单展示当前已实现的功能与后续开发计划，按基础版本和高级版本分别维护。✅ 表示已完成，🗓 表示规划中；规划内容不代表已上线或确定的发布时间。
+
+| 版本 | 已完成 | 规划中 | 完整清单 |
+| --- | --- | --- | --- |
+| 基础版本 | 8 项 | 15 项 | [基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md) |
+| 高级版本 | 0 项 | 17 项 | [高级版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md) |
+
 ## 技术栈
 
 | 层次 | 主要技术 |
@@ -51,7 +60,7 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 
 欢迎贡献问题复现、文档、可公开分发的原型样本和代码改进。开始前请阅读[后端贡献说明](https://github.com/prototype-hub/proto-bridge/blob/main/CONTRIBUTING.md)或[前端贡献说明](https://github.com/prototype-hub/proto-bridge-ui/blob/main/CONTRIBUTING.md)，每次变更聚焦一个问题，并说明行为变化与验证结果。
 
-当前可共同推进的方向包括真实 HTML/Axure 样本与回归覆盖、项目成员级数据权限，以及备份恢复、升级与回滚实践，详见[后端路线图](https://github.com/prototype-hub/proto-bridge#路线图)。
+可共同推进的功能与计划详见[基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md)和[高级版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md)。
 
 安全问题请先阅读对应仓库的 [SECURITY.md（后端）](https://github.com/prototype-hub/proto-bridge/blob/main/SECURITY.md)或 [SECURITY.md（前端）](https://github.com/prototype-hub/proto-bridge-ui/blob/main/SECURITY.md)，按其中说明使用私密报告渠道。
 
