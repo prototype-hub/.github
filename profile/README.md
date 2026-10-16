@@ -59,4 +59,4 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 
 前后端仓库有权授予的原创贡献采用 **Apache License 2.0**，具体以各自的 [LICENSE（后端）](https://github.com/prototype-hub/proto-bridge/blob/main/LICENSE)、[LICENSE（前端）](https://github.com/prototype-hub/proto-bridge-ui/blob/main/LICENSE)及 NOTICE 为准；第三方组件和用户上传内容遵循各自的权利与许可。
 
-感谢 Spring、Project Reactor、hsweb、EasyORM、Vue、Ant Design Vue、PostgreSQL、Redis、Elasticsearch、Nginx 等开源项目。
+感谢 [Spring](https://github.com/spring-projects/spring-framework)、[Project Reactor](https://github.com/reactor/reactor-core)、[hsweb](https://github.com/hs-web/hsweb-framework)、[Vue](https://github.com/vuejs/core)、[Ant Design Vue](https://github.com/vueComponent/ant-design-vue)、[PostgreSQL](https://github.com/postgres/postgres)、[Redis](https://github.com/redis/redis)、[Elasticsearch](https://github.com/elastic/elasticsearch)、[Nginx](https://github.com/nginx/nginx) 等开源项目。
