@@ -25,7 +25,9 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 
 ### 当前使用边界
 
-平台接收静态 HTML 原型包，不提供设计源文件编辑、Figma 原生文件导入或多人实时协同编辑。当前原型业务采用**共享工作区，尚未按项目成员或创建者隔离数据**；部署前请结合团队的数据访问需求评估。
+平台接收静态 HTML 原型包，不提供设计源文件编辑、Figma 原生文件导入或多人实时协同编辑。项目访问由**成员范围与平台权限共同控制**，支持所有者、编辑者和查看者角色；管理员例外也按服务端权限校验。项目和版本列表的服务端分页、筛选仍待实现。
+
+前后端需同步升级：旧内部匿名预览凭证失效，历史项目需显式执行归属迁移，无法确定有效所有者的项目由管理员指定所有者。升级前请备份数据库与文件，按[接口与迁移说明](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md)及[数据管理说明](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/DATA.md)操作。
 
 前端 Mock 用于本地体验与契约回归，真实后端联调和生产部署需按目标版本及环境验收。详细兼容边界以两个仓库的 README 和发布文档为准。
 
@@ -35,12 +37,14 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 
 | 版本 | 已完成 | 部分完成 | 开发中 | 规划中 | 完整清单 |
 | --- | --- | --- | --- | --- | --- |
-| 基础版本 | 9 项 | 2 项 | 0 项 | 12 项 | [基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md) |
+| 基础版本 | 9 项 | 3 项 | 0 项 | 11 项 | [基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md) |
 | 高级版本 | 0 项 | 0 项 | 0 项 | 17 项 | [高级版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md) |
 
 ### 当前进展
 
-- **容量与用量**：已实现共享工作区默认 5 个项目、每项目 5 个逻辑版本的服务端配额校验、真实用量展示与幂等创建；删除释放用量，原位替换不增加用量，历史超限仍保留已有内容的访问。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/5)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/10)，公共权益接口仍在规划中。
+- **项目成员与数据隔离**：已支持所有者、编辑者、查看者角色、成员增改删、待认领项目处理及服务端权限隔离。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/9)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/14)；项目和版本列表的服务端分页、筛选仍待实现。
+- **内部预览授权**：采用 5 分钟授权，到期后需重新申请；成员变更或版本内容替换会使旧授权失效。公开分享单独管理，移除成员不会自动撤销已有分享；已渲染或下载的内容无法远程清除。
+- **容量与用量**：默认按同一部署总计 5 个项目、每项目 5 个逻辑版本执行服务端配额校验，提供真实用量展示与幂等创建；删除释放用量，原位替换不增加用量，历史超限仍保留已有内容的访问。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/5)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/10)，公共权益接口仍在规划中。
 - **网页文件夹上传**：已支持选择 HTML 导出目录、浏览器 Worker 打包、进度与取消，以及 ZIP 回退；打包完成后由用户确认上传。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/8)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/13)，输入预算与兼容范围见[基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md)。
 - **账号与预览**：已支持可选“记住我”和经服务端验证的会话恢复，并改进沙箱内嵌套页面的预览兼容性；原型继续受沙箱隔离，嵌套页面兼容性以实际导出包为准。
 - **发行与运维**：已完成独立 JAR 启动与重启、双进程配额竞争、数据库与原型及系统文件联合恢复、连接真实后端的 Chrome 流程隔离验证，并补齐兼容依赖补丁与审计门禁。完整漏洞扫描、许可归属、真实 Axure 样本、目标生产环境与镜像验收仍待完成，详见[后端发布指南](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/RELEASE.md)与[前端发布指南](https://github.com/prototype-hub/proto-bridge-ui/blob/main/docs/public/RELEASE.md)。
