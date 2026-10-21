@@ -4,7 +4,7 @@
 
 PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将设计工具导出的静态 HTML 原型整理为可管理的项目与版本，让需求评审、原型预览和交付沟通拥有统一入口。
 
-**导出 HTML → 上传 ZIP → 在线预览与 Inspect → 可控分享 → 研发与测试交付**
+**导出 HTML → 上传 ZIP 或选择 HTML 文件夹打包 → 在线预览与 Inspect → 可控分享 → 研发与测试交付**
 
 ## 项目导航
 
@@ -17,7 +17,7 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 
 ## 能做什么
 
-- **集中管理原型**：按项目维护版本，上传或替换 Axure 等工具导出的完整 HTML ZIP，自动处理页面与资源。
+- **集中管理原型**：按项目维护版本，上传或替换完整 HTML ZIP，也可选择 Axure 等工具已导出的 HTML 文件夹，由浏览器打包后确认上传。
 - **预览与检查**：在浏览器中浏览页面树、体验交互，使用 Inspect 查看和复制元素属性、CSS、HTML、图片及 SVG 信息。
 - **受控分享**：通过独立链接分享原型，设置访问密码与有效期，复制或删除分享，服务于评审与交付。
 - **系统管理**：提供用户、角色、组织、职位、菜单与按钮权限、数据字典、品牌配置、个人中心及日志管理。
@@ -35,14 +35,15 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 
 | 版本 | 已完成 | 部分完成 | 开发中 | 规划中 | 完整清单 |
 | --- | --- | --- | --- | --- | --- |
-| 基础版本 | 8 项 | 1 项 | 1 项 | 13 项 | [基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md) |
+| 基础版本 | 9 项 | 2 项 | 0 项 | 12 项 | [基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md) |
 | 高级版本 | 0 项 | 0 项 | 0 项 | 17 项 | [高级版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md) |
 
 ### 当前进展
 
 - **容量与用量**：已实现共享工作区默认 5 个项目、每项目 5 个逻辑版本的服务端配额校验、真实用量展示与幂等创建；删除释放用量，原位替换不增加用量，历史超限仍保留已有内容的访问。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/5)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/10)，公共权益接口仍在规划中。
+- **网页文件夹上传**：已支持选择 HTML 导出目录、浏览器 Worker 打包、进度与取消，以及 ZIP 回退；打包完成后由用户确认上传。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/8)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/13)，输入预算与兼容范围见[基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md)。
 - **账号与预览**：已支持可选“记住我”和经服务端验证的会话恢复，并改进沙箱内嵌套页面的预览兼容性；原型继续受沙箱隔离，嵌套页面兼容性以实际导出包为准。
-- **发行与运维**：独立 JAR 运行与重启、多进程竞争、数据库与文件联合恢复、真实后端浏览器验证正在开发，仍待验收。
+- **发行与运维**：已完成独立 JAR 启动与重启、双进程配额竞争、数据库与原型及系统文件联合恢复、连接真实后端的 Chrome 流程隔离验证，并补齐兼容依赖补丁与审计门禁。完整漏洞扫描、许可归属、真实 Axure 样本、目标生产环境与镜像验收仍待完成，详见[后端发布指南](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/RELEASE.md)与[前端发布指南](https://github.com/prototype-hub/proto-bridge-ui/blob/main/docs/public/RELEASE.md)。
 
 ## 技术栈
 
@@ -58,7 +59,7 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 1. **准备环境**：后端使用 JDK 21 和仓库自带的 Maven Wrapper；前端使用 Node.js 22.12+ 与 pnpm 9.0.6。Docker 可用于运行依赖和容器部署。
 2. **启动后端**：按[后端快速开始](https://github.com/prototype-hub/proto-bridge#快速开始)准备 PostgreSQL、本地配置和存储目录，设置自己的管理员密码，再构建并运行服务。首次体验可关闭 Redis 与 Elasticsearch。
 3. **连接前端**：按[前端联调说明](https://github.com/prototype-hub/proto-bridge-ui#连接真实后端)安装依赖、设置 API 代理并运行 `pnpm dev`。也可按[本地体验指南](https://github.com/prototype-hub/proto-bridge-ui#五分钟启动)使用 `pnpm dev:mock` 查看界面。
-4. **交付第一个原型**：创建项目，将包含 HTML、脚本、样式及图片的完整导出目录打成 ZIP，上传后检查页面、资源和交互，再创建分享。
+4. **交付第一个原型**：创建项目，上传包含 HTML、脚本、样式及图片的完整 ZIP，或选择 HTML 导出文件夹由浏览器打包，确认后上传；检查页面、资源和交互，再创建分享。
 
 生产部署、HTTPS、反向代理、大文件上传及备份恢复请参阅[后端部署说明](https://github.com/prototype-hub/proto-bridge#服务器部署)与[前端部署说明](https://github.com/prototype-hub/proto-bridge-ui#docker-部署)。
 
