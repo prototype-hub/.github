@@ -19,6 +19,7 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 
 - **集中管理原型**：按项目维护逻辑版本，上传完整 HTML ZIP 或为同一版本上传新修订并保留历史；也可选择 Axure 等工具已导出的 HTML 文件夹，由浏览器打包后确认上传。
 - **预览与检查**：在浏览器中浏览与查找页面、体验交互，复制固定修订的当前页面链接；使用 Inspect 查看和复制元素属性、CSS、HTML、图片及 SVG 信息。
+- **修订比较与质量体检**：人工并排比较同一版本的两份固定修订，查看页面与文件差异；检查包内静态资源、内部链接和路径问题，查看及下载 JSON 报告。
 - **受控分享**：通过独立链接分享原型，默认固定修订，也可选择跟随最新；设置密码与有效期，并支持编辑、暂停与恢复、链接轮换及永久撤销，服务于评审与交付。
 - **系统管理**：提供用户、角色、组织、职位、菜单与按钮权限、数据字典、品牌配置、个人中心及日志管理。
 - **自主部署**：基础运行使用 PostgreSQL 与本地文件存储；Redis、Elasticsearch 可按需要启用，支持 JAR、Docker 与 Nginx 部署。
@@ -39,13 +40,14 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 
 | 版本 | 已完成 | 部分完成 | 开发中 | 规划中 | 完整清单 |
 | --- | --- | --- | --- | --- | --- |
-| 基础版本 | 11 项 | 4 项 | 0 项 | 8 项 | [基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md) |
+| 基础版本 | 13 项 | 3 项 | 0 项 | 7 项 | [基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md) |
 | 高级版本 | 0 项 | 0 项 | 0 项 | 17 项 | [高级版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md) |
 
 ### 当前进展
 
 - **项目成员与数据隔离**：所有者、编辑者、查看者角色、成员增改删、待认领项目处理及服务端权限隔离已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/9)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/14)。项目和版本列表现已支持服务端分页、名称筛选与排序，记录和总数均按权限与条件过滤，用量独立查询；分页实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/13)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/18)。
-- **修订历史与版本对比**：已保留不可变历史，提供修订列表与游标加载、固定修订预览及并发更新冲突提示。现已支持固定修订与页面标识的链接、复制当前页面链接，以及授权页面树内按名称或路径查找；页面定位已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/14)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/19)。人工并排比较及页面与文件差异仍待实现，页面查找也不等于全文检索，详见[页面定位契约](https://github.com/prototype-hub/proto-bridge-ui/blob/main/docs/public/API.md#固定页面链接与页面目录)。
+- **修订历史与版本对比**：已保留不可变历史、固定修订预览、并发更新冲突提示及[固定页面定位](https://github.com/prototype-hub/proto-bridge-ui/blob/main/docs/public/API.md#固定页面链接与页面目录)。同一逻辑版本的两份固定修订现可人工双窗并排预览，查看页面与文件的新增、删除、变化和不变统计，两个差异列表独立分页；比较实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/18)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/23)。比较依据路径与文件摘要，不代表自动视觉比较；页面查找仍只覆盖授权页面树的名称和路径。
+- **原型包质量检查**：历史修订已提供“质量体检”，检查入口、清单文件存在性与支持的本地 HTML/CSS 静态引用，报告缺失资源、失效内部链接和路径问题，并可下载同一报告 JSON。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/19)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/24)；报告明确展示未检查项及不完整限制，具体范围见[修订对比与质量检查范围](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md#修订对比与质量检查范围)。
 - **项目整理与恢复**：软删除已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/15)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/20)，回收站及逐项恢复已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/16)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/21)。恢复保留原 ID、历史与文件，重新检查权限和当前容量，旧分享与内部授权不复活；分组、标签、收藏、封面管理和归档仍待实现。
 - **回收站保留期**：各条记录自删除起固定保留 30×24 小时，到期即不可恢复，即使文件仍在磁盘上；后台通过持久队列异步回收原型快照，实际磁盘回收可延后。后端规则已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/17)，保留期提示与配套契约回归已合入[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/22)；需配套更新，避免旧版本“持续保留”提示造成误解。操作边界见[回收站与逐项恢复](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#回收站与逐项恢复)及[基础功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md#回收站与保留期)。
 - **分享管理增强**：已支持编辑说明、密码与有效期，暂停与恢复、链接轮换、永久撤销，固定指定历史修订或跟随最新；并发配置冲突时刷新核对，不自动覆盖。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/12)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/17)，授权与撤销行为见[分享生命周期](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#分享生命周期)。
