@@ -79,6 +79,10 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 
 ## 一起完善
 
+欢迎大家加入QQ群进行沟通交流。
+
+[点击链接加入群聊【prototype-hub】](https://qm.qq.com/q/8WYYFTzS24)
+
 欢迎贡献问题复现、文档、可公开分发的原型样本和代码改进。开始前请阅读[后端贡献说明](https://github.com/prototype-hub/proto-bridge/blob/main/CONTRIBUTING.md)或[前端贡献说明](https://github.com/prototype-hub/proto-bridge-ui/blob/main/CONTRIBUTING.md)，每次变更聚焦一个问题，并说明行为变化与验证结果。
 
 可共同推进的功能与计划详见[基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md)和[高级版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md)。
