@@ -36,11 +36,11 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 
 ## 功能清单与开发计划
 
-核对日期：**2026-10-24**。以下清单展示当前已实现的功能与后续开发计划，按基础版本和高级版本分别维护。✅ 表示已完成，🔄 表示部分完成，🚧 表示开发中，🗓 表示规划中；规划内容不代表已上线或确定的发布时间。
+核对日期：**2026-10-25**。以下清单展示当前已实现的功能与后续开发计划，按基础版本和高级版本分别维护。✅ 表示已完成，🔄 表示部分完成，🚧 表示开发中，🗓 表示规划中；规划内容不代表已上线或确定的发布时间。
 
 | 版本 | 已完成 | 部分完成 | 开发中 | 规划中 | 完整清单 |
 | --- | --- | --- | --- | --- | --- |
-| 基础版本 | 13 项 | 3 项 | 0 项 | 7 项 | [基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md) |
+| 基础版本 | 13 项 | 4 项 | 0 项 | 6 项 | [基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md) |
 | 高级版本 | 0 项 | 0 项 | 0 项 | 17 项 | [高级版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md) |
 
 ### 当前进展
@@ -48,13 +48,14 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 - **项目成员与数据隔离**：所有者、编辑者、查看者角色、成员增改删、待认领项目处理及服务端权限隔离已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/9)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/14)。项目和版本列表现已支持服务端分页、名称筛选与排序，记录和总数均按权限与条件过滤，用量独立查询；分页实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/13)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/18)。
 - **修订历史与版本对比**：已保留不可变历史、固定修订预览、并发更新冲突提示及[固定页面定位](https://github.com/prototype-hub/proto-bridge-ui/blob/main/docs/public/API.md#固定页面链接与页面目录)。同一逻辑版本的两份固定修订现可人工双窗并排预览，查看页面与文件的新增、删除、变化和不变统计，两个差异列表独立分页；比较实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/18)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/23)。比较依据路径与文件摘要，不代表自动视觉比较；页面查找仍只覆盖授权页面树的名称和路径。
 - **原型包质量检查**：历史修订已提供“质量体检”，检查入口、清单文件存在性与支持的本地 HTML/CSS 静态引用，报告缺失资源、失效内部链接和路径问题，并可下载同一报告 JSON。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/19)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/24)；报告明确展示未检查项及不完整限制，具体范围见[修订对比与质量检查范围](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md#修订对比与质量检查范围)。
-- **项目整理与恢复**：软删除已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/15)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/20)，回收站及逐项恢复已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/16)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/21)。恢复保留原 ID、历史与文件，重新检查权限和当前容量，旧分享与内部授权不复活；分组、标签、收藏、封面管理和归档仍待实现。
+- **项目整理与恢复**：项目与版本已支持软删除、回收站及逐项恢复；统一回收菜单的项目、版本两个标签页已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/23)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/28)，按当前权限查询与恢复，可在授权的活动项目范围筛选版本。恢复保留原 ID、历史与文件，重新检查权限和当前容量，旧分享与内部授权不复活；分组、业务标签、收藏、封面管理和归档仍待实现。
 - **回收站保留期**：各条记录自删除起固定保留 30×24 小时，到期即不可恢复，即使文件仍在磁盘上；后台通过持久队列异步回收原型快照，实际磁盘回收可延后。后端规则已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/17)，保留期提示与配套契约回归已合入[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/22)；需配套更新，避免旧版本“持续保留”提示造成误解。操作边界见[回收站与逐项恢复](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#回收站与逐项恢复)及[基础功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md#回收站与保留期)。
 - **分享管理增强**：已支持编辑说明、密码与有效期，暂停与恢复、链接轮换、永久撤销，固定指定历史修订或跟随最新；并发配置冲突时刷新核对，不自动覆盖。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/12)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/17)，授权与撤销行为见[分享生命周期](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#分享生命周期)。
+- **邮箱身份与访客管理**：分享可选邮箱验证码身份识别，项目支持脱敏访客分页及启停，已合入[后端身份](https://github.com/prototype-hub/proto-bridge/pull/20)、[访客管理](https://github.com/prototype-hub/proto-bridge/pull/21)与[前端身份](https://github.com/prototype-hub/proto-bridge-ui/pull/25)、[访客管理](https://github.com/prototype-hub/proto-bridge-ui/pull/26)；批注仍待实现，访客停用不等于撤销匿名分享。SMTP 发件地址校验及安全分类排障已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/23)，邮件仅用于验证码，部署需按[邮箱身份与 SMTP](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/OPERATIONS.md#邮箱身份与smtp)验证真实收件。
 - **内部预览授权**：采用绑定固定修订的 5 分钟授权，到期后需重新申请；成员变更会使旧授权失效，上传新修订后旧授权仍指向原修订直至到期。公开分享单独管理，移除成员不会自动撤销已有分享；已渲染或下载的内容无法远程清除。
 - **容量与用量**：默认按同一部署总计 5 个项目、每项目 5 个逻辑版本执行服务端配额校验，提供真实用量展示与幂等创建；软删除释放用量，恢复重新校验并占用名额，同一逻辑版本上传新修订保留历史且不增加逻辑版本用量，历史超限仍保留活动内容的访问。容量实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/5)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/10)，公共权益接口仍在规划中。
-- **网页文件夹上传**：已支持选择 HTML 导出目录、浏览器 Worker 打包、进度与取消，以及 ZIP 回退；打包完成后由用户确认上传。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/8)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/13)，输入预算与兼容范围见[基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md)。
-- **账号与预览**：已支持可选“记住我”和经服务端验证的会话恢复，并改进沙箱内嵌套页面的预览兼容性；原型继续受沙箱隔离，嵌套页面兼容性以实际导出包为准。
+- **网页文件夹上传**：已支持选择 HTML 导出目录、浏览器 Worker 打包、进度与取消，以及 ZIP 回退；打包完成后由用户确认上传。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/8)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/13)，并在[前端体验改进](https://github.com/prototype-hub/proto-bridge-ui/pull/27)中增加逐路径冲突诊断；输入预算与兼容范围见[基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md)。
+- **账号与预览**：已支持可选“记住我”和经服务端验证的会话恢复，并改进沙箱内嵌套页面的预览兼容性；[前端体验改进](https://github.com/prototype-hub/proto-bridge-ui/pull/27)还包括 390px 窄屏紧凑预览及查询、分页布局调整。原型继续受沙箱隔离，嵌套页面兼容性以实际导出包为准。
 - **后端持久化**：已合入 [ORM 查询与结构化 DDL 改造](https://github.com/prototype-hub/proto-bridge/pull/11)，使用框架查询能力和 jOOQ 结构描述；当前配置与验证范围仍为 PostgreSQL，不代表已支持其他数据库。
 - **发行与运维**：已完成独立 JAR 启动与重启、双进程配额竞争、数据库与原型及系统文件联合恢复、连接真实后端的 Chrome 流程隔离验证，并补齐兼容依赖补丁与审计门禁。完整漏洞扫描、许可归属、真实 Axure 样本、目标生产环境与镜像验收仍待完成，详见[后端发布指南](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/RELEASE.md)与[前端发布指南](https://github.com/prototype-hub/proto-bridge-ui/blob/main/docs/public/RELEASE.md)。
 
