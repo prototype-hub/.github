@@ -22,6 +22,7 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 - **修订比较与质量体检**：人工并排比较同一版本的两份固定修订，查看页面与文件差异；检查包内静态资源、内部链接和路径问题，查看及下载 JSON 报告。
 - **受控分享**：通过独立链接分享原型，默认固定修订，也可选择跟随最新；设置密码与有效期，并支持编辑、暂停与恢复、链接轮换及永久撤销，服务于评审与交付。
 - **页面反馈**：围绕固定修订页面收集客户反馈，支持根页面打点与矩形/椭圆圈选、文字及单张图片投稿、网页回复、内部备注、解决与重开、线程链接、成员负责人及跨页总览。
+- **统计概览**：查看权限范围内的项目、逻辑版本及有效分享数量，以及近 7/30 天的分享访问趋势和项目排行。
 - **系统管理**：提供用户、角色、组织、职位、菜单与按钮权限、数据字典、品牌配置、个人中心及日志管理。
 - **自主部署**：基础运行使用 PostgreSQL 与本地文件存储；Redis、Elasticsearch 可按需要启用，支持 JAR、Docker 与 Nginx 部署。
 
@@ -37,12 +38,12 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 
 ## 功能清单与开发计划
 
-核对日期：**2026-10-28**。以下清单展示当前已实现的功能与后续开发计划，按基础版本和高级版本分别维护。✅ 表示已完成，🔄 表示部分完成，🚧 表示开发中，🗓 表示规划中；规划内容不代表已上线或确定的发布时间。
+核对日期：**2026-10-31**。以下清单展示当前已实现的功能与后续开发计划，按基础版本和高级版本分别维护。✅ 表示已完成，🔄 表示部分完成，🚧 表示开发中，🗓 表示规划中；规划内容不代表已上线或确定的发布时间。
 
 | 版本 | 已完成 | 部分完成 | 开发中 | 规划中 | 完整清单 |
 | --- | --- | --- | --- | --- | --- |
-| 基础版本 | 14 项 | 4 项 | 0 项 | 5 项 | [基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md) |
-| 高级版本 | 0 项 | 0 项 | 0 项 | 17 项 | [高级版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md) |
+| 基础版本 | 15 项 | 3 项 | 0 项 | 5 项 | [基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md) |
+| 高级版本 | 0 项 | 1 项 | 0 项 | 16 项 | [高级版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md) |
 
 ### 当前进展
 
@@ -57,7 +58,9 @@ PrototypeHub 面向产品经理、UI/UX 设计师、研发与测试团队，将�
 - **固定页面工作项**：可为固定修订页面手动关联 HTTP(S) 工作项地址和纯文本备注，支持新增、编辑、取消关联及服务端分页；已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/35)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/46)。上传新修订不会迁移旧引用；页面与需求关系、全文检索、文案清单导出仍待实现，不包含外部 API 或 Webhook 对接。
 - **界面体验**：已改进[反馈草稿与列表详情](https://github.com/prototype-hub/proto-bridge-ui/pull/40)、[批注抽屉](https://github.com/prototype-hub/proto-bridge-ui/pull/43)、[分享工具栏与身份流程](https://github.com/prototype-hub/proto-bridge-ui/pull/44)、[反馈总览](https://github.com/prototype-hub/proto-bridge-ui/pull/45)及[项目、版本和历史工作区](https://github.com/prototype-hub/proto-bridge-ui/pull/46)，完善 390px 窄屏布局、键盘操作与草稿保护；这些改进只覆盖对应流程。
 - **内部预览授权**：采用绑定固定修订的 5 分钟授权，到期后需重新申请；成员变更会使旧授权失效，上传新修订后旧授权仍指向原修订直至到期。公开分享单独管理，移除成员不会自动撤销已有分享；已渲染或下载的内容无法远程清除。
-- **容量与用量**：默认按同一部署总计 5 个项目、每项目 5 个逻辑版本执行服务端配额校验，提供真实用量展示与幂等创建；软删除释放用量，恢复重新校验并占用名额，同一逻辑版本上传新修订保留历史且不增加逻辑版本用量，历史超限仍保留活动内容的访问。容量实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/5)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/10)，公共权益接口仍在规划中。
+- **容量与用量**：免费默认同一部署总计 5 个项目、每项目 5 个逻辑版本，新增与恢复统一按服务端有效容量准入，提供真实用量展示与幂等创建；软删除释放用量，恢复重新校验并占用名额，同一逻辑版本上传新修订保留历史且不增加逻辑版本用量，历史超限仍保留活动内容的访问。[公共权益接口](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#installation-credential-verification)已实现，分别返回免费权益、已验证凭证声明与当前实际容量，相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/38)。
+- **统计与分享访问**：已支持权限内项目、逻辑版本及有效分享数量，近 7/30 天访问趋势与最多 10 个项目的排行，已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/37)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/48)。只记录成功打开分享外壳的访问，同票重放去重，同次切页、内部预览与资源请求不计；刷新重新打开可产生新访问。历史未采集与真实零值分别显示，访问次数不代表人数；尽力采集失败不阻断浏览，也不代表已实现用户研究或行为漏斗。
+- **安装凭证与离线签发**：已提供安装请求下载、凭证导入、本地验签及声明查询，已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/38)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/49)；配套离线签发与换证也已实现。签发工具供可信操作员本机使用，不内置于客户运行端。验签成功仅确认凭证声明，不自动扩容、启用高级功能或启动试用；正式项目及版本扩容执行、运行端 30 天高级试用与完整权益管理仍待实现，详见[高级功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md#离线授权实现边界)。
 - **网页文件夹上传**：已支持选择 HTML 导出目录、浏览器 Worker 打包、进度与取消，以及 ZIP 回退；打包完成后由用户确认上传。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/8)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/13)，并在[前端体验改进](https://github.com/prototype-hub/proto-bridge-ui/pull/27)中增加逐路径冲突诊断；输入预算与兼容范围见[基础版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md)。
 - **账号与预览**：已支持可选“记住我”和经服务端验证的会话恢复，并改进沙箱内嵌套页面的预览兼容性；[前端体验改进](https://github.com/prototype-hub/proto-bridge-ui/pull/27)还包括 390px 窄屏紧凑预览及查询、分页布局调整。原型继续受沙箱隔离，嵌套页面兼容性以实际导出包为准。
 - **后端持久化**：已合入 [ORM 查询与结构化 DDL 改造](https://github.com/prototype-hub/proto-bridge/pull/11)，使用框架查询能力和 jOOQ 结构描述；当前配置与验证范围仍为 PostgreSQL，不代表已支持其他数据库。
