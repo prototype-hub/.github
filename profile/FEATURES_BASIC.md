@@ -2,7 +2,7 @@
 
 [返回组织主页](https://github.com/prototype-hub) · [高级版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md)
 
-核对日期：**2026-10-31**。✅ 表示已完成，🔄 表示部分完成，🚧 表示开发中，🗓 表示规划中。当前共 23 项功能，其中 15 项已完成、3 项部分完成、0 项开发中、5 项规划中；规划内容不代表已上线或确定的发布时间。
+核对日期：**2026-11-01**。✅ 表示已完成，🔄 表示部分完成，🚧 表示开发中，🗓 表示规划中。当前共 23 项功能，其中 15 项已完成、4 项部分完成、0 项开发中、4 项规划中；规划内容不代表已上线或确定的发布时间。
 
 | 功能 | 功能说明 | 开发状态 |
 | --- | --- | --- |
@@ -18,13 +18,13 @@
 | 项目成员与数据隔离 | 所有者、编辑者、查看者角色、成员增改删及服务端权限隔离；项目和版本列表支持服务端分页、名称筛选与排序，记录和总数均按当前权限及筛选条件过滤 | ✅ 已完成 |
 | 不可变历史与版本对比 | 保留不可变修订、历史列表与固定页面链接、页面查找及并发冲突提示；同一逻辑版本的两份固定修订可人工双窗并排预览，查看页面与文件的新增、删除、变化及不变状态、完整统计及独立分页 | ✅ 已完成 |
 | 分享管理增强 | 编辑已有分享的说明、密码与有效期，暂停与恢复、链接轮换及永久撤销，固定指定历史修订或跟随最新；并发配置冲突时刷新核对，不自动覆盖 | ✅ 已完成 |
-| 外部客户批注 | 邮箱验证码身份、根页面打点与矩形/椭圆圈选、文字及单张图片投稿、网页回复、内部备注隔离、解决/重开、线程深链、成员负责人及跨页反馈总览；几何位置按根文档与视口尺寸匹配，不跟踪语义元素 | ✅ 已完成 |
+| 外部客户批注 | 邮箱验证码身份、根页面打点与矩形/椭圆圈选、文字及单张图片投稿、网页回复、内部备注隔离、解决/重开、线程深链、成员负责人及跨页反馈总览；支持人工核实后的历史反馈授权与撤销，保留原作者；几何位置按根文档与视口尺寸匹配，不跟踪语义元素 | ✅ 已完成 |
 | 基础评审与发布 | 针对固定修订记录评审结论、批准状态和发布快照 | 🗓 规划中 |
 | 项目整理与恢复 | 已支持项目与版本软删除、统一回收菜单的项目/版本标签页及按权限逐项恢复、30 天保留与到期清理及配套前端提示；分组、业务标签、收藏、封面管理和归档仍待实现 | 🔄 部分完成 |
 | 资料与附件管理 | 关联图片稿、PRD、PDF、链接及标准导出包，记录来源与版本关系 | 🗓 规划中 |
-| 设计资产与规范 | Inspect 测距、颜色字体汇总、批量资产导出、组件代码映射与设计 Token 规范包 | 🗓 规划中 |
+| 设计资产与规范 | 已支持固定修订原始图片/SVG 的路径搜索、选择、原文件及保路径 ZIP 下载与 JSON 对账清单；Inspect 测距、颜色字体汇总、组件代码映射与设计 Token 规范包仍待实现 | 🔄 部分完成 |
 | 研发交付说明 | 元素功能说明、页面交付状态、状态与异常验收矩阵、视口自测记录及 Markdown / HTML 说明书 | 🗓 规划中 |
-| 需求追踪与检索 | 已支持固定修订页面手动关联 HTTP(S) 工作项地址与纯文本备注，新增、编辑、取消关联及服务端分页；页面与需求关系、全文检索及文案清单导出仍待实现 | 🔄 部分完成 |
+| 需求追踪与检索 | 已支持固定页面工作项关联、静态文案提取及人工维护、业务词汇/备注/需求链接、分页筛选与全页 CSV/JSON 导出；页面与需求关系及全文检索仍待实现 | 🔄 部分完成 |
 | 演示与体验验证 | 任务演示脚本、视频时间点说明、可用性任务与问卷反馈 | 🗓 规划中 |
 | 原型包质量检查 | 对明确历史修订检查入口与清单文件存在性、支持的本地 HTML/CSS 静态引用、缺失资源、失效内部链接和路径问题，展示范围与完成状态，并导出同一份 JSON 报告 | ✅ 已完成 |
 | 容量与用量管理 | 已实现同一部署默认 5 个项目、每项目 5 个逻辑版本的服务端原子配额校验、真实用量展示、幂等创建、软删除释放及恢复重占额度；新增与恢复按当前有效容量准入，上传新修订不增逻辑版本用量，历史超限保留活动内容；公共权益接口分别返回免费权益、已验证声明和实际容量 | ✅ 已完成 |
@@ -34,7 +34,19 @@
 
 统计概览提供当前权限范围内的项目、逻辑版本与有效分享数量，以及近 7/30 天分享访问趋势和最多 10 个项目的排行，已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/37)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/48)。分享外壳成功打开后确认一次访问，同票重放去重；同次切页、内部预览和资源请求不计，刷新重新打开可产生新访问。历史未采集与真实零值分开显示；访问次数不代表独立人数，尽力采集失败不阻断浏览，也不包含用户研究与行为漏斗。
 
-[公共权益接口](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#installation-credential-verification)已提供免费权益、已验证凭证声明与实际容量的独立读取。管理员可下载安装请求、导入凭证并查询本地验签状态，已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/38)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/49)。验签成功不自动扩容、启用高级功能或启动试用；基础浏览、分享和邮箱身份验证码不依赖商业凭证。高级部分的已实现与待项见[离线授权实现边界](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md#离线授权实现边界)。
+[公共权益接口](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#installation-credential-verification)已提供免费权益、已验证凭证声明与实际容量的独立读取。管理员可下载安装请求、导入凭证并查询本地验签状态；容量扩展与授权页组合接口已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/39)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/50)。正式永久扩容由配套高级容量模块执行；缺少有效凭证或未加载该模块时回到免费 5/5 容量，保留已有超额数据，仅限制新增或恢复准入。凭证声明本身不激活其他高级功能或试用，基础浏览、分享和邮箱身份验证码不依赖商业凭证。高级部分的已实现与待项见[离线授权实现边界](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md#离线授权实现边界)。
+
+## 原始资产导出边界
+
+固定修订的独立图片与 SVG 可按原路径搜索、分页及跨页选择，下载单个原文件、所选或全部 ZIP、JSON 对账清单，已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/40)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/51)。只包含上传包中独立保存的图片文件，不含内联 SVG、外链或 data URL；不转换或重新生成图片。全部导出与搜索结果无关，所选导出严格使用明确选择的集合；ZIP 保留相对路径并附同集合的路径、大小及 SHA-256 清单。
+
+列表与下载均要求当前内部账号、平台查询动作与项目读取权限；分享、访客或预览凭证不授予导出权限。准备附件时复核实际源文件大小与摘要，权限或文件检查失败不发送部分成功包，已下载字节无法远程收回。该能力不包含 Inspect 测距、颜色字体汇总、组件映射或 Token 规范；具体预算与接口见[固定修订原始图片与 SVG](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#固定修订原始图片与-svg)。
+
+## 固定页文案清单
+
+历史修订和成员预览中可选择固定页面，首次提取源 HTML 的静态文案并保存快照；已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/42)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/53)。静态原文及出处只读，可维护业务词汇、备注和 HTTP(S) 需求链接；人工文案可新增、编辑、删除，用于补充动态文字。清单支持关键词、来源及是否关联需求的筛选与分页，不修改原型文件，也不抓取需求链接内容。
+
+提取只解析该固定页的源 HTML，不执行 JavaScript、不读取外链或子页面，也不推断运行时可见性；隐藏状态文字可能在内，动态文案仍需作者补充。首次快照不会因重提覆盖，提取预算超限不保存部分静态条目，界面保留失败原因并允许人工补充，不能据此声称已覆盖全部动态文案。CSV/JSON 导出当前页全部静态与人工条目、身份、来源与限制，不受列表筛选或分页影响；CSV 做公式防护，导出版本冲突时需刷新核对。权限、提取预算与导出行为见[固定页面文案清单](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#固定页面文案清单)。
 
 ## 修订对比与质量检查范围
 
@@ -72,7 +84,7 @@
 
 ## 固定页面反馈边界
 
-公开反馈需活动、有效的固定修订分享，并开启身份与反馈许可；目标为外壳当前选择的固定修订及唯一页面标识，不跟随原型 iframe 内部导航。访客可创建纯文本线程、网页回复及重开，仅查看同分享、同身份范围内的本人线程；有项目编辑能力且具备相应版本动作权限的成员可处理客户线程、对客回复、内部备注及解决/重开。内部备注由服务端隔离，不向客户展示。文字反馈已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/26)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/31)，具体见[固定页面文字反馈](https://github.com/prototype-hub/proto-bridge-ui/blob/main/docs/public/API.md#固定页面文字反馈)。
+公开反馈需活动、有效的固定修订分享，并开启身份与反馈许可；目标为外壳当前选择的固定修订及唯一页面标识，不跟随原型 iframe 内部导航。访客可创建本人线程，查看和回复同分享内本人或当前有效人工授权范围的对客线程；显式重开仅限本人线程，关联访客回复已解决线程时沿原规则自动重开。有项目编辑能力且具备相应版本动作权限的成员可处理客户线程、对客回复、内部备注及解决/重开。内部备注由服务端隔离，不向客户展示。文字反馈已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/26)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/31)，人工授权范围以下节说明为准。
 
 线程深链固定修订、页面与线程，仅用于定位；打开后仍须满足当前分享密码、身份验证或成员权限，不能凭链接找回已丢失的未验证身份。复制不包含访问凭据、正文或邀请片段；相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/28)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/33)。
 
@@ -82,17 +94,23 @@
 
 访客新建反馈可明确选择根页面的点、矩形或椭圆位置快照，已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/32)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/37)。定位要求当前根文档与视口尺寸均精确匹配，尺寸不匹配时不定位；不读取子 frame 内部坐标、不跨 frame 转换，也不跟踪语义元素，动态内容即使尺寸相同仍可能变化。
 
-全部页面反馈总览已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/33)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/38)，成员可组合状态与“全部负责人／分派给我／未分派”筛选，相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/34)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/39)。总览使用服务端分页，客户仍只能查看同一分享、本人身份范围的线程；成员责任筛选不授予权限、不自动转交或发送通知。线程的问题状态不代表评审结论、批准或发布流程，回复图片也不代表已实现资料与附件管理。
+全部页面反馈总览已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/33)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/38)，成员可组合状态与“全部负责人／分派给我／未分派”筛选，相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/34)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/39)。总览使用服务端分页，客户范围为同一分享内本人或当前有效人工授权的对客线程；成员责任筛选不授予权限、不自动转交或发送通知。线程的问题状态不代表评审结论、批准或发布流程，回复图片也不代表已实现资料与附件管理。
+
+### 人工核实后的历史反馈授权
+
+所有者或当前有效 ADMIN 同时具备所需平台动作时，可填写线下核实依据，将旧未验证来源在同一分享、逻辑版本和固定修订内的全部历史对客线程，授权给本项目已有且启用的邮箱访客。已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/41)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/52)，支持查看授权记录及填写原因撤销。此操作不按姓名或邮箱自动找回原身份，不合并身份、不改变原作者或原消息、不转移草稿，也不复活旧会话；新回复使用目标访客的真实身份，内部备注仍不外露。
+
+目标仍需自己的有效邮箱会话和原分享的当前授权。分享配置换代或目标访客停用再启用使旧关系失效，需先显式撤销，再核实新建；撤销后未来读取、图片及回复重新校验，已返回客户端的内容不能收回。规则与审计字段见[人工核实后的历史评审授权](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#人工核实后的历史评审授权)。
 
 ## 固定页面工作项边界
 
-固定修订页面可手动关联 HTTP(S) 地址和纯文本备注，支持新增、编辑、取消关联与服务端分页；已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/35)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/46)。查看者只读，编辑者仍需相应平台动作与当前项目权限；上传新修订不复制或迁移旧引用，取消关联不会删除外部工作项。网络结果不明时保留原请求与键，先核对再由用户明确重试，不自动写入。页面与需求关系、全文检索及文案导出仍待实现，不抓取链接或调用外部系统，也不包含高级 API、Webhook 与通知能力。接口见[固定页面工作项引用](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#固定页面工作项引用)。
+固定修订页面可手动关联 HTTP(S) 地址和纯文本备注，支持新增、编辑、取消关联与服务端分页；已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/35)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/46)。查看者只读，编辑者仍需相应平台动作与当前项目权限；上传新修订不复制或迁移旧引用，取消关联不会删除外部工作项。网络结果不明时保留原请求与键，先核对再由用户明确重试，不自动写入。页面与需求关系、全文检索仍待实现；文案清单与导出见[固定页文案清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_BASIC.md#固定页文案清单)。引用不抓取链接或调用外部系统，也不包含高级 API、Webhook 与通知能力。接口见[固定页面工作项引用](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#固定页面工作项引用)。
 
 升级需先部署后端再配套前端，停止旧写入和清理节点；同窗口整库备份需包含 `p_work_item`、固定修订和相关 `p_creation_receipt`，并保留全部原型与系统文件。工作项地址和备注属于项目私有资料，引用本身不生成外部网站的文件副本。操作要求见[固定页面工作项引用升级](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/OPERATIONS.md#固定页面工作项引用升级)。
 
 ## 评审数据与恢复验证
 
-联合备份应涵盖数据库中的全部 **9 张评审表**、请求回执与分享配置，以及全部原型、系统文件和 `review-images` 原图目录。已合入[九表评审恢复核验](https://github.com/prototype-hub/proto-bridge/pull/27)与[恢复后浏览器联验](https://github.com/prototype-hub/proto-bridge-ui/pull/32)，覆盖恢复后的邀请与文字反馈；另已完成[回复原图恢复专项](https://github.com/prototype-hub/proto-bridge/pull/29)。另已完成[固定页面工作项专项](https://github.com/prototype-hub/proto-bridge/pull/35)的真实后端浏览器联调、非空工作项与相关回执及原型/系统双文件存储恢复核验；该结果仅覆盖本功能，不代表全平台恢复或发行验收。现有恢复核验尚未覆盖非空负责人或非空几何锚点记录，目标生产环境与镜像仍需单独验收，完整发行缺口见[后端发布指南](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/RELEASE.md)与[前端发布指南](https://github.com/prototype-hub/proto-bridge-ui/blob/main/docs/public/RELEASE.md)。
+联合备份应涵盖数据库中的全部评审数据、请求回执与分享配置，以及全部原型、系统文件和 `review-images` 原图目录；新增历史授权表 `p_review_association`、文案表 `p_copy_snapshot/p_copy_entry` 及相关回执也须保留，见[历史评审授权与审计](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/DATA.md#历史评审授权与审计)和[固定页文案清单数据](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/DATA.md#固定页文案清单数据)。已合入的[九表评审恢复核验](https://github.com/prototype-hub/proto-bridge/pull/27)与[恢复后浏览器联验](https://github.com/prototype-hub/proto-bridge-ui/pull/32)覆盖当时的邀请与文字反馈；另已完成[回复原图恢复专项](https://github.com/prototype-hub/proto-bridge/pull/29)及[固定页面工作项专项](https://github.com/prototype-hub/proto-bridge/pull/35)的非空恢复。上述结果仅覆盖各自范围；新增授权、文案、访问统计及当前全部持久化数据的非空完整恢复仍待专项验收，新功能联调或重启不代表已完成恢复。现有恢复核验尚未覆盖非空负责人或非空几何锚点记录，目标生产环境与镜像仍需单独验收，完整发行缺口见[后端发布指南](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/RELEASE.md)与[前端发布指南](https://github.com/prototype-hub/proto-bridge-ui/blob/main/docs/public/RELEASE.md)。
 
 发行工具已修正[主许可证全文与附属 NOTICE 区分](https://github.com/prototype-hub/proto-bridge-ui/pull/41)及[超时审计结果判定](https://github.com/prototype-hub/proto-bridge-ui/pull/42)，防止以附属声明替代主许可证或将超时后的结果认定成功。这些修复不替代完整漏洞扫描、许可权属审核、真实 Axure 样本及目标部署与镜像验收。
 
