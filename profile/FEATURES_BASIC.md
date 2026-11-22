@@ -2,7 +2,7 @@
 
 [返回组织主页](https://github.com/prototype-hub) · [高级版本功能清单](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md)
 
-核对日期：**2026-11-19**。✅ 表示已完成，🔄 表示部分完成，🚧 表示开发中，🗓 表示规划中。当前共 23 项功能，其中 15 项已完成、6 项部分完成、0 项开发中、2 项规划中；规划内容不代表已上线或确定的发布时间。
+核对日期：**2026-11-22**。✅ 表示已完成，🔄 表示部分完成，🚧 表示开发中，🗓 表示规划中。当前共 23 项功能，其中 16 项已完成、5 项部分完成、0 项开发中、2 项规划中；规划内容不代表已上线或确定的发布时间。
 
 | 功能 | 功能说明 | 开发状态 |
 | --- | --- | --- |
@@ -21,7 +21,7 @@
 | 外部客户批注 | 邮箱验证码身份、根页面打点与矩形/椭圆圈选、文字及单张图片投稿、网页回复、内部备注隔离、解决/重开、线程深链、成员负责人及跨页反馈总览；支持人工核实后的历史反馈授权与撤销，保留原作者；几何位置按根文档与视口尺寸匹配，不跟踪语义元素 | ✅ 已完成 |
 | 基础评审与发布 | 针对固定修订记录评审结论、批准状态和发布快照 | 🗓 规划中 |
 | 项目整理与恢复 | 已支持项目与版本软删除、统一回收菜单的项目/版本标签页及按权限逐项恢复、30 天保留与到期清理及配套前端提示；分组、业务标签、收藏、封面管理和归档仍待实现 | 🔄 部分完成 |
-| 资料与附件管理 | 已支持 HTML ZIP/文件夹导入来源、固定修订私有图片与文档、分页查看、来源维护、鉴权下载及有界正文提取、只读阅读与搜索；来源链接不抓取内容，独立链接资料等仍待完善 | 🔄 部分完成 |
+| 资料与附件管理 | 已支持图片稿、PRD/PDF 等文档、独立 HTTP(S) 链接与标准 HTML 导出包的固定修订关联、来源维护、分类分页及鉴权下载；提供有界正文提取、阅读与搜索，以及图片和 PDF 分页查看 | ✅ 已完成 |
 | 设计资产与规范 | 已支持固定修订原始图片/SVG 的路径搜索、选择、原文件及保路径 ZIP 下载与 JSON 对账清单，以及根文档 Inspect 测距和有界颜色字体汇总；组件代码映射与设计 Token 规范包仍待实现 | 🔄 部分完成 |
 | 研发交付说明 | 已支持固定页面人工视口自测，以及草稿/待交付/研发中/已完成四态、交付说明、可选成员负责人和分页筛选；元素功能说明、完整验收矩阵及 Markdown / HTML 说明书仍待实现 | 🔄 部分完成 |
 | 需求追踪与检索 | 已支持固定页面工作项、文案清单与 CSV/JSON 导出，以及权限内文案、资料（含已提取正文）、反馈的分页检索与回源；页面与需求关系仍待实现 | 🔄 部分完成 |
@@ -38,11 +38,15 @@
 
 ## 修订资料与来源边界
 
-HTML ZIP 或文件夹导入可选填来源工具、名称、HTTP(S) 链接与说明，绑定实际生成的固定修订；旧修订可补录来源。原型来源声明的移除不删除 ZIP 或原型内容，新修订不会自动迁移旧资料。来源由成员手工声明，不抓取链接，也不证明工具身份或官方集成；独立链接资料条目仍待完善。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/48)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/60)。
+HTML ZIP 或文件夹导入可选填来源工具、名称、HTTP(S) 链接与说明，原始 ZIP 与来源绑定实际生成的固定修订，可按当前权限下载；旧修订可补录来源。原型来源声明的移除不删除 ZIP 或原型内容，新修订不会自动迁移旧资料。来源由成员手工声明，不抓取链接，也不证明工具身份或官方集成。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/48)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/60)。
+
+固定修订现可独立关联 HTTP(S) 资料链接，支持新增、编辑、移除及类型筛选，点击后在新窗口跳转。移除只取消当前关联，不删除或修改外部资料，也不抓取目标内容。链接维护与图片/PDF 查看已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/56)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/71)。
 
 内部成员可导入 PNG/JPEG 图片（单个最多 **5 MiB**），以及 PDF、UTF-8 TXT/MD、无宏 DOCX/XLSX/PPTX（单个最多 **20 MiB**），每修订最多 **100 份、合计 200 MiB**。支持分类分页、来源并发版本校验、删除及当前权限下的原字节下载；图片/文档只供内部项目成员访问，公开分享和访客身份不授予资料权限。
 
-新文档上传后自动准备有界正文，旧文档可由有编辑权限的成员显式提取，随后按当前权限只读阅读并纳入内容搜索。PDF 仅读取文本层，不识别扫描图片；Office 不执行或原生渲染，提取失败或受限时保留原文件下载入口。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/53)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/66)，接口与限制见[固定修订资料与人工来源](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#固定修订资料与人工来源)。
+新文档上传后自动准备有界正文，旧文档可由有编辑权限的成员显式提取，随后按当前权限只读阅读并纳入内容搜索。PDF 正文提取仅读取文本层，不识别扫描图片；Office 不执行或原生渲染，提取失败或受限时保留原文件下载入口。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/53)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/66)，接口与限制见[固定修订资料与人工来源](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/API.md#固定修订资料与人工来源)。
+
+图片支持适应宽度或实际尺寸查看；PDF 在 **20 MiB、100 页**预算内按需一次读取一页静态 PNG，不嵌入原文档。预览失败或受限时仍可阅读已提取正文或按权限下载原文件。切换资料、关闭或权限失效时清除旧预览，迟到响应不恢复旧内容；这些入口仍只供当前有权内部成员使用。
 
 ## 固定页面人工视口自测
 
@@ -104,7 +108,7 @@ HTML ZIP 或文件夹导入可选填来源工具、名称、HTTP(S) 链接与说
 
 固定分享可创建、分页管理及撤销指定邮箱邀请，链接由用户手动复制分发；邀请最长有效 24 小时，且受分享到期时间约束，收件人仍须输入指定邮箱并重新完成验证码验证。邀请不把分享变为仅受邀者可访问，也不替代分享密码；撤销待用邀请不撤销已签发身份，后者需通过访客管理停用。相关实现已合入[后端](https://github.com/prototype-hub/proto-bridge/pull/25)和[前端](https://github.com/prototype-hub/proto-bridge-ui/pull/30)，行为见[固定分享邀请](https://github.com/prototype-hub/proto-bridge-ui/blob/main/docs/public/API.md#固定分享邀请)。
 
-当前邮件仅用于验证码，不自动发送邀请邮件，也不提供业务通知。未配置可用邮件时不跳过邮箱验证；部署需按[邮箱身份与 SMTP](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/OPERATIONS.md#邮箱身份与smtp)验证真实投递，连接或认证成功不代表收件成功。
+基础邮箱身份验证码与可选高级业务通知分别管理，不自动发送邀请邮件；业务通知的事件、订阅及投递范围见[高级通知边界](https://github.com/prototype-hub/.github/blob/main/profile/FEATURES_ADVANCED.md#通知与可靠投递边界)。未配置可用邮件时不跳过邮箱验证；部署需按[邮箱身份与 SMTP](https://github.com/prototype-hub/proto-bridge/blob/main/doc/public/OPERATIONS.md#邮箱身份与smtp)验证真实投递，连接或认证成功不代表收件成功。
 
 ## 固定页面反馈边界
 
